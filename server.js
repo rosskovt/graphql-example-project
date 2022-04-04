@@ -1,5 +1,5 @@
 const express = require('express');
-//const { buildSchema } = require('graphql');
+const { buildSchema } = require('graphql');
 const { graphqlHTTP } = require('express-graphql');
 
 const { makeExecutableSchema } = require('@graphql-tools/schema');
@@ -34,10 +34,10 @@ type Review {
     comment: String
 }
 `;
-
-const schema = makeExecutableSchema({
-    typeDefs: [schemaText]
-})
+const schema = buildSchema(schemaText);
+// const schema = makeExecutableSchema({
+    // typeDefs: [schemaText]
+// })
 
 
 const root = {
