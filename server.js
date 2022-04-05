@@ -15,10 +15,10 @@ const schema = makeExecutableSchema({
 });
 
 
-const root = {
-    products: require('./products/products.model'),
-    orders: require('./orders/orders.model'),
-};
+// const root = {
+//     products: require('./products/products.model'),
+//     orders: require('./orders/orders.model'),
+// };
 
 const app = express();
 
@@ -28,6 +28,6 @@ app.listen(3000, () => {
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,
-    rootValue: root,
+    //rootValue: root,
     graphiql: true,
 })); 
