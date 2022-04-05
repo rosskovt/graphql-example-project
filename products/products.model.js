@@ -36,10 +36,36 @@ function getProductsByPrice(min, max) {
 function getProductById(id) {
     return products.find((product) => {
         return product.id === id;
-    }); 
+    });
+}
+
+function addNewProduct(id, description, price) {
+    const newProduct = {
+        id: id,
+        description,
+        reviews: [],
+        price,
+    };
+    products.push(newProduct);
+    return newProduct;
+}
+
+function addNewProductReview(id, rating, comment) {
+    const newReview = {
+        rating,
+        comment,
+    };
+    return products.find((product) => {
+        if (product.id === id) {
+            product.reviews.push(newReview);
+        }
+        return product;
+    });
 }
 module.exports = {
     getAllProducts,
     getProductsByPrice,
     getProductById,
+    addNewProduct,
+    addNewProductReview,
 };
